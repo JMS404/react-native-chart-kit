@@ -31,10 +31,11 @@ class PieChart extends AbstractChart {
       if (absolute) {
         value = c.item[this.props.accessor];
       } else {
-        if (total === 0) {
+        if ( parseInt(((100 / total) * c.item[this.props.accessor]).toFixed(0)) === 0) {
           value = 0 + "%";
         } else {
-          value = Math.round((100 / total) * c.item[this.props.accessor]) + "%";
+          // value = Math.round((100 / total) * c.item[this.props.accessor]) + "%";
+          value = ((100 / total) * c.item[this.props.accessor]).toFixed(2) + "%"; // Display legend % to 2 decimal places
         }
       }
 
